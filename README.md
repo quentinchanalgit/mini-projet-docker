@@ -1,10 +1,8 @@
 # mini-projet-docker
 Mini-projet Easytraining
 
-Objectifs
-Les objectifs de cet examen pratique sont de garantir que vous êtes capable de gérer une infrastructure Docker.
 
-Vous serez donc évalué sur les points suivants.
+L'objectif de cet examen pratique est de garantir la gestion d'une infrastructure Docker.
 
 Améliorer un processus de déploiement d'applications existant
 Versionner la release de l' infrastructure
@@ -28,11 +26,11 @@ En conclusion, POZOS a besoin d'agilité sur sa ferme logicielle.
 
 
 Infrastructure
-Pour ce POC, vous n’utiliserez qu’une seule machine sur laquelle Docker sera installé.
+Pour ce POC, nous n'aurons besoin que d'une seule machine sur laquelle Docker sera installé.
 
 Le Build et le Déploiement se feront sur cette machine.
 
-POZOS vous recommande d'utiliser le système d'exploitation centos7.6 car c'est le plus utilisé dans l'entreprise.
+POZOS recommande d'utiliser le système d'exploitation centos7.6 car c'est le plus utilisé dans l'entreprise.
 
 
 # Gestion de la Liste des Étudiants

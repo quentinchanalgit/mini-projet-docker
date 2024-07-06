@@ -79,4 +79,7 @@ docker build . -t api.student_age_list
 docker images
 
 Capture 
+![image](https://github.com/quentinchanalgit/mini-projet-docker/assets/154371753/b436b43d-8d9b-4d7e-8b9b-12b2bb52bb34)
+
+
 

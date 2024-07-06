@@ -13,4 +13,5 @@ Une application simple pour gérer une liste d'étudiants avec une API REST.
 Prénom : Quentin
 
 Nom : Chanal
+
 Linkedin : https://www.linkedin.com/in/quentinchanal-alternant-ing%C3%A9nieur-cloud-devops-lyon-rhone/

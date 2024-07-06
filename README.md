@@ -229,6 +229,25 @@ Réseau
 
 Définit un réseau nommé pozos-registry-network pour permettre la communication entre les deux services
 
+Déploiement du registre
+
+docker-compose -f registre.yml up -d
+
+docker ps
+
+Capture
+
+Consulation par navigateur 
+
+Tag et push de l'image
+
+docker tag api-student-list localhost:8080/api-student-list
+docker push localhost:8080/api-student-list
+
+Capture
+
+Conclusion
+
 
 
 

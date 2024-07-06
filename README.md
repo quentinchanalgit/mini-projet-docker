@@ -242,6 +242,7 @@ Consulation par navigateur
 Tag et push de l'image
 
 docker tag api-student-list localhost:8080/api-student-list
+
 docker push localhost:8080/api-student-list
 
 Capture

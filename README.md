@@ -74,12 +74,72 @@ Build et test
 
 Une fois que nous avons cloné le dépot, il faut suivre les étapes pour préparer l'application student list.
 
+1.
+
 cd ./mini-projet-docker/simple_api
 docker build . -t api.student_age_list
-docker images
+docker image
 
 Capture 
-![image](https://github.com/quentinchanalgit/mini-projet-docker/assets/154371753/b436b43d-8d9b-4d7e-8b9b-12b2bb52bb34)
+
+2. Créer un réseau de type bridge pour que les deux conteneurs puissent se contacter par leurs noms grâce aux fonctions DNS.
+
+   docker network create student_list.network --driver=bridge
+docker network ls
+
+Capture 
+
+
+3. Retourner au répertoire principal du projet, puis démarrer le conteneur de l'API backend en utilisant ces paramètres :
+
+   cd ..
+docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./simple_api/:/data/ api.student_age
+docker ps
+
+Capture
+
+
+4- Avant de démarrer le conteneur du site web, nous allons mettre à jour la ligne suivante dans le fichier index.php, afin que api_ip_or_name et port correspondent à notre configuration :
+
+    -i s\<api_ip_or_name:port>\api.student_list:5000\g ./website/index.php
+
+    Capture
+
+
+5- Le nom d'utilisateur et le mot de passe sont fournis dans le code source.
+
+.simple_api/student_age.py
+
+Capture
+
+
+6- Démarrez le conteneur de l'application web frontale en exécutant la commande suivante :
+
+docker run --rm -d --name=webapp.student_list -p 8082:80 --network=student_list.network -v ./website/:/var/www/html -e USERNAME=toto -e PASSWORD=python php:apache
+docker ps
+
+
+Capture
+
+7- Test de l'API via le frontend 
+
+Capture
+
+
+Pour finir, nous nettoyons l'espace de travail : 
+
+docker stop api.student_list
+docker stop webapp.student_list
+docker network rm student_list.network
+docker network ls
+docker ps
+
+Capture 
+
+
+
+
+
 
 
 

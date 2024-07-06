@@ -136,6 +136,16 @@ docker ps
 
 Capture 
 
+Infrastructure As Code
+
+Après avoir testé  L'image API, nous allons tout assembler et déployer en utilisant docker-compose.
+
+Docker Compose est un outil essentiel pour ce type de projet, car il permet de gérer plusieurs conteneurs de manière efficace et coordonnée. 
+
+
+
+
+
 
 
 

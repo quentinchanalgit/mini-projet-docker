@@ -147,6 +147,28 @@ Après avoir testé  L'image API, nous allons tout assembler et déployer en uti
 Docker Compose est un outil essentiel pour ce type de projet, car il permet de gérer plusieurs conteneurs de manière efficace et coordonnée. 
 
 
+Le fichier docker-compose.yml déploiera deux services :
+
+website : l'interface utilisateur finale avec les caractéristiques suivantes :
+
+image : phpapache - environnement : vous fournirez le NOM D'UTILISATEUR et le MOT DE PASSE pour permettre à l'application web d'accéder à l'API via l'authentification.
+
+volumes : pour éviter que l'image phpapache fonctionne avec le site web par défaut, nous allons monter le site web donné par POZOS à utiliser. Vous devez avoir quelque chose comme : ./website:/var/www/html
+
+depend_on : vous devez vous assurer que l'API démarrera avant le site web
+
+ports : n'oubliez pas d'exposer le port
+
+API : l'image construite précédemment sera utilisée avec la spécification suivante :
+
+image : le nom de l'image construite précédemment
+
+volumes : vous monterez le fichier student_age.json dans /data/student_age.json
+
+ports : n'oubliez pas d'exposer le port
+
+networks : n'oubliez pas d'ajouter un réseau spécifique pour votre projet
+
 
 
 

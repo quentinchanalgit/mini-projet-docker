@@ -149,25 +149,85 @@ Docker Compose est un outil essentiel pour ce type de projet, car il permet de g
 
 Le fichier docker-compose.yml déploiera deux services :
 
-website : l'interface utilisateur finale avec les caractéristiques suivantes :
-
-image : phpapache - environnement : vous fournirez le NOM D'UTILISATEUR et le MOT DE PASSE pour permettre à l'application web d'accéder à l'API via l'authentification.
-
-volumes : pour éviter que l'image phpapache fonctionne avec le site web par défaut, nous allons monter le site web donné par POZOS à utiliser. Vous devez avoir quelque chose comme : ./website:/var/www/html
-
-depend_on : vous devez vous assurer que l'API démarrera avant le site web
-
-ports : n'oubliez pas d'exposer le port
+website : l'interface utilisateur finale
 
 API : l'image construite précédemment sera utilisée avec la spécification suivante :
 
-image : le nom de l'image construite précédemment
 
-volumes : vous monterez le fichier student_age.json dans /data/student_age.json
+Pour déployer les conteneurs il faut se deplacer dans le même répertoire que notre docker-compose.yml et saisir la commande ci-dessous en mode détaché avec l'option -d
 
-ports : n'oubliez pas d'exposer le port
 
-networks : n'oubliez pas d'ajouter un réseau spécifique pour votre projet
+docker-compose up -d
+docker-compose ps
+
+Capture
+
+
+Test à partir du navigateur
+
+Capture
+
+
+
+
+
+Mise en place d'un registre privé
+
+Pour éxecuter un registre privé, nous allons procéder avec : 
+
+registry:2 comme image du registre, et joxit/docker-registry-ui:static comme image du frontend
+
+Cette configuration Docker Compose définit deux services pour gérer un registre de conteneurs Docker privé avec une interface utilisateur :
+
+pozos-registry
+
+Image : Utilise l'image registry:2.8.1
+
+Nom du conteneur : pozos-registry
+
+Redémarrage : Toujours redémarrer en cas de défaillance 
+Ports : Expose le port 5000 sur l'hôte
+
+Volumes : Monte les répertoires /opt/docker/registry sur l'hôte vers /var/lib/registry dans le conteneur pour stocker les données du registre, et ./registry/auth vers /auth pour les fichiers d'authentification
+
+Environnement :
+
+REGISTRY_STORAGE_DELETE_ENABLED=true : Permet la suppression des images dans le registre
+
+REGISTRY_AUTH=htpasswd : Utilise htpasswd pour l'authentification
+
+REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm : Définit le domaine pour l'authentification
+
+REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd : Spécifie le chemin du fichier htpasswd pour l'authentification
+
+Commande :
+Installe apache2-utils pour utiliser htpasswd et crée un fichier d'authentification avec l'utilisateur pozos et le mot de passe pozos
+
+Démarre le registre Docker en utilisant le fichier de configuration /etc/docker/registry/config.yml
+
+frontend-registry
+
+Image : Utilise l'image joxit/docker-registry-ui:2
+
+Nom du conteneur : frontend-registry
+
+Dépendance : Dépend du service pozos-registry, assurant qu'il est démarré en premier
+
+Ports : Expose le port 8280 sur l'hôte
+
+Environnement :
+
+NGINX_PROXY_PASS_URL=http://pozos-registry:5000 : Redirige les requêtes vers le registre pozos-registry sur le port 5000
+
+DELETE_IMAGES=true : Permet la suppression des images via l'interface
+
+REGISTRY_TITLE=Pozos : Définit le titre de l'interface utilisateur
+
+SINGLE_REGISTRY=true : Utilise un seul registre
+
+Réseau
+
+Définit un réseau nommé pozos-registry-network pour permettre la communication entre les deux services
 
 
 

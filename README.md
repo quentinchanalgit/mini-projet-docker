@@ -61,10 +61,15 @@ Build et test
 
 Une fois que nous avons cloné le dépot, il faut suivre les étapes pour préparer l'application student list.
 
-1.
+1. Cloner le dépôt GitHub
+
+   git clone https://github.com/diranetafen/student-list
+cd student-list
+
 
 cd ./mini-projet-docker/simple_api
-docker build . -t api.student_age_list
+docker build -t student-list-app .
+
 docker image
 
 Capture 

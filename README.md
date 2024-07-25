@@ -92,9 +92,12 @@ docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./s
 
 4- Nous allons ensuite tester que l'api fonctionne avec cette commande : 
 
-    curl -u toto:python -X GET http://127.0.0.1:4000/pozos/api/v1.0/get_student_ages
+    curl -u toto:python -X GET http://127.0.0.1:4000/pozos/api/v1.0/get_student_ages  :
 
-    ![image](https://github.com/user-attachments/assets/2e864f3b-3b63-455d-a451-8b43b72f3e22)
+    ![image](https://github.com/user-attachments/assets/278eff3d-e601-4971-a49b-9160258ed1b7)
+
+
+    
 
 
     

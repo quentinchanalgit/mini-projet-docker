@@ -209,6 +209,15 @@ docker push localhost:5000/joxit/docker-registry-ui:static
 
 ![image](https://github.com/user-attachments/assets/9acaab2a-9d57-469e-bd49-9a9e6c4d4e7c)
 
+Cette commande envoie l'image Docker joxit/docker-registry-ui:static vers un registre Docker local hébergé sur localhost:5000. Cela permet de stocker l'image dans le registre pour une utilisation ultérieure ou pour faciliter le déploiement sur d'autres environnements.
+
+
+
+
+
+
+
+
 
 
 

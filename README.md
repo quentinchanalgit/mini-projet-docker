@@ -87,23 +87,25 @@ Capture
    docker network create student_list.network --driver=bridge
 docker network ls
 
-Capture 
+![image](https://github.com/user-attachments/assets/5ce32682-38a2-44a1-8fac-9b6301fe00af)
+
 
 
 3. Retourner au répertoire principal du projet, puis démarrer le conteneur de l'API backend en utilisant ces paramètres :
 
    cd ..
-docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./simple_api/:/data/ api.student_age
-docker ps
+docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./simple_api/:/data/ api.student_age.json -p 4000:5000 api-pozos:1 
 
-Capture
+![image](https://github.com/user-attachments/assets/152a6db0-d299-4f1f-bf3f-405688a82999)
 
 
-4- Avant de démarrer le conteneur du site web, nous allons mettre à jour la ligne suivante dans le fichier index.php, afin que api_ip_or_name et port correspondent à notre configuration :
 
-    -i s\<api_ip_or_name:port>\api.student_list:5000\g ./website/index.php
+4- Nous allons ensuite tester que l'api fonctionne avec cette commande : 
 
-    Capture
+    curl -u toto:python -X GET http://127.0.0.1:4000/pozos/api/v1.0/get_student_ages
+
+    ![image](https://github.com/user-attachments/assets/76b6112c-65ad-4793-90ac-fd6b42deee57)
+
 
 
 5- Le nom d'utilisateur et le mot de passe sont fournis dans le code source.

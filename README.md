@@ -5,9 +5,13 @@ Mini-projet Easytraining
 L'objectif de cet examen pratique est de garantir la gestion d'une infrastructure Docker.
 
 Améliorer un processus de déploiement d'applications existant
+
 Versionner la release de l' infrastructure
+
 Aborder les meilleures pratiques lors de la mise en œuvre de l'infrastructure Docker
+
 Infrastructure en tant que code
+
 Mettre en place un Registre privé
 
 

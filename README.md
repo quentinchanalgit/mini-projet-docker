@@ -205,16 +205,10 @@ localhost:5000/student-list-app :  Ici, localhost:5000 indique que l'image sera 
 
 ![image](https://github.com/user-attachments/assets/ca01739f-7c36-401c-9db6-d27cb093fad5)
 
+docker push localhost:5000/joxit/docker-registry-ui:static 
 
+![image](https://github.com/user-attachments/assets/9acaab2a-9d57-469e-bd49-9a9e6c4d4e7c)
 
-
-Consulation par navigateur 
-
-Tag et push de l'image
-
-docker tag api-student-list localhost:8080/api-student-list
-
-docker push localhost:8080/api-student-list
 
 
 

@@ -112,19 +112,6 @@ docker ps
 
 
 
-Pour finir, nous nettoyons l'espace de travail : 
-
-docker stop api.student_list
-
-docker stop webapp.student_list
-
-docker network rm student_list.network
-
-docker network ls
-
-docker ps
-
-Capture 
 
 Infrastructure As Code
 

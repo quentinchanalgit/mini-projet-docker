@@ -160,14 +160,22 @@ Pour déployer les conteneurs il faut se deplacer dans le même répertoire que 
 
 
 docker-compose up -d
+
+![image](https://github.com/user-attachments/assets/6f7506d7-7c17-4996-96e6-c0a1098defbc)
+
+
 docker-compose ps
 
-Capture
+![image](https://github.com/user-attachments/assets/5e109ac5-3ce5-4b10-bc5c-19eeb63bc147)
 
 
-Test à partir du navigateur
 
-Capture
+
+
+Test à partir du navigateur pour vérifier que cela fonctionne en graphique
+
+![image](https://github.com/user-attachments/assets/6efd7915-6bde-416c-9d05-264636a24337)
+
 
 
 
@@ -175,69 +183,30 @@ Capture
 
 Mise en place d'un registre privé
 
-Pour éxecuter un registre privé, nous allons procéder avec : 
+Déploiement du registre sur port 5000
 
-registry:2 comme image du registre, et joxit/docker-registry-ui:static comme image du frontend
+Le registre sera appelé registry-pozos et sera lancé dans un réseau docker personnalisé nommé "student-list_api-pozos"
 
-Cette configuration Docker Compose définit deux services pour gérer un registre de conteneurs Docker privé avec une interface utilisateur :
+![image](https://github.com/user-attachments/assets/57796a1f-e0e0-4fb8-832e-89b7ceeeb210)
 
-pozos-registry
+Après vérification avec la commande docker ps , le container du registre écoute bien sur le port 5000
 
-Image : Utilise l'image registry:2.8.1
+![image](https://github.com/user-attachments/assets/2437e873-5606-4dcd-a1bd-e6527c5c66c5)
 
-Nom du conteneur : pozos-registry
+Après créé le docker registry, nous allons ensuite pousser nos images vers le registre local : 
 
-Redémarrage : Toujours redémarrer en cas de défaillance 
-Ports : Expose le port 5000 sur l'hôte
+docker tag student-list-app localhost:5000/student-list-app
 
-Volumes : Monte les répertoires /opt/docker/registry sur l'hôte vers /var/lib/registry dans le conteneur pour stocker les données du registre, et ./registry/auth vers /auth pour les fichiers d'authentification
+docker tag : Cette commande est utilisée pour ajouter une nouvelle étiquette (tag) à une image Docker existante. L'étiquette permet d'identifier une version spécifique de l'image.
 
-Environnement :
+student-list-app :  nom de l'image Docker existante que vous souhaitez tagger.
 
-REGISTRY_STORAGE_DELETE_ENABLED=true : Permet la suppression des images dans le registre
+localhost:5000/student-list-app :  Ici, localhost:5000 indique que l'image sera poussée vers un registre Docker local fonctionnant sur ma machine (sur le port 5000). student-list-app est le nom de l'image dans le registre.
 
-REGISTRY_AUTH=htpasswd : Utilise htpasswd pour l'authentification
+![image](https://github.com/user-attachments/assets/ca01739f-7c36-401c-9db6-d27cb093fad5)
 
-REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm : Définit le domaine pour l'authentification
 
-REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd : Spécifie le chemin du fichier htpasswd pour l'authentification
 
-Commande :
-Installe apache2-utils pour utiliser htpasswd et crée un fichier d'authentification avec l'utilisateur pozos et le mot de passe pozos
-
-Démarre le registre Docker en utilisant le fichier de configuration /etc/docker/registry/config.yml
-
-frontend-registry
-
-Image : Utilise l'image joxit/docker-registry-ui:2
-
-Nom du conteneur : frontend-registry
-
-Dépendance : Dépend du service pozos-registry, assurant qu'il est démarré en premier
-
-Ports : Expose le port 8280 sur l'hôte
-
-Environnement :
-
-NGINX_PROXY_PASS_URL=http://pozos-registry:5000 : Redirige les requêtes vers le registre pozos-registry sur le port 5000
-
-DELETE_IMAGES=true : Permet la suppression des images via l'interface
-
-REGISTRY_TITLE=Pozos : Définit le titre de l'interface utilisateur
-
-SINGLE_REGISTRY=true : Utilise un seul registre
-
-Réseau
-
-Définit un réseau nommé pozos-registry-network pour permettre la communication entre les deux services
-
-Déploiement du registre
-
-docker-compose -f registre.yml up -d
-
-docker ps
-
-Capture
 
 Consulation par navigateur 
 
@@ -247,9 +216,6 @@ docker tag api-student-list localhost:8080/api-student-list
 
 docker push localhost:8080/api-student-list
 
-Capture
-
-Conclusion
 
 
 

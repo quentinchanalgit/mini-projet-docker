@@ -68,11 +68,9 @@ cd student-list
 
 
 cd ./mini-projet-docker/simple_api
-docker build -t student-list-app .
+docker build -t api-pozos:1 .
 
-docker image
-
-Capture 
+![image](https://github.com/user-attachments/assets/8dc615b8-a826-425f-af1d-2ea698d40112)
 
 2. Créer un réseau de type bridge pour que les deux conteneurs puissent se contacter par leurs noms grâce aux fonctions DNS.
 

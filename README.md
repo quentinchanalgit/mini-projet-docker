@@ -107,6 +107,7 @@ docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./s
 6- Démarrez le conteneur de l'application web frontale en exécutant la commande suivante :
 
 docker run --rm -d --name=webapp.student_list -p 8082:80 --network=student_list.network -v ./website/:/var/www/html -e USERNAME=toto -e PASSWORD=python php:apache
+
 docker ps
 
 

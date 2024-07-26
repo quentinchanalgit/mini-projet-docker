@@ -94,8 +94,7 @@ docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./s
 
     curl -u toto:python -X GET http://127.0.0.1:4000/pozos/api/v1.0/get_student_ages  :
 
-    ![image](https://github.com/user-attachments/assets/278eff3d-e601-4971-a49b-9160258ed1b7)
-
+   
 
     
 

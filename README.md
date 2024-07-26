@@ -83,7 +83,7 @@ docker network ls
 
 3. Retourner au répertoire principal du projet, puis démarrer le conteneur de l'API backend en utilisant ces paramètres :
 
-   cd ..
+   
 docker run --rm -d --name=api.student_age_list --network=student_list_net -v ./simple_api/:/data/ api.student_age.json -p 4000:5000 api-pozos:1 
 
 ![image](https://github.com/user-attachments/assets/152a6db0-d299-4f1f-bf3f-405688a82999)

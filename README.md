@@ -152,7 +152,11 @@ Test à partir du navigateur pour vérifier que cela fonctionne en graphique
 
 
 
+
+
 Mise en place d'un registre privé
+
+La création de ce registre privé Docker va nous permettre de stocker, partager et gérer les images Docker de manière privée, plutôt que de les publier sur un registre public comme Docker Hub.
 
 Déploiement du registre sur port 5000
 
